@@ -1,0 +1,17 @@
+{
+    "name": "code-mitra-vscode",
+    "displayName": "CodeMITRA",
+    "description": "Local code teaching assistant",
+    "version": "0.0.1",
+    "engines": { "vscode": "^1.50.0" },
+    "activationEvents": ["onCommand:codemitra.start"],
+    "main": "extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "codemitra.start",
+                "title": "Start CodeMITRA"
+            }
+        ]
+    }
+}

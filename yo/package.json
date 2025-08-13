@@ -1,0 +1,87 @@
+{
+  "name": "codemitra",
+  "displayName": "CodeMITRA - AI Code Teaching Assistant",
+  "description": "AI-powered code teaching assistant powered by Ollama. Get help with coding questions, examples, and explanations.",
+  "version": "1.0.0",
+  "publisher": "sourabh",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "ai",
+    "code",
+    "teaching",
+    "assistant",
+    "ollama",
+    "llm"
+  ],
+  "activationEvents": [
+    "onCommand:codemitra.askQuestion",
+    "onCommand:codemitra.explainCode",
+    "onCommand:codemitra.generateCode"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codemitra.askQuestion",
+        "title": "CodeMITRA: Ask a Question",
+        "category": "CodeMITRA"
+      },
+      {
+        "command": "codemitra.explainCode",
+        "title": "CodeMITRA: Explain Selected Code",
+        "category": "CodeMITRA"
+      },
+      {
+        "command": "codemitra.generateCode",
+        "title": "CodeMITRA: Generate Code",
+        "category": "CodeMITRA"
+      }
+    ],
+    "configuration": {
+      "title": "CodeMITRA",
+      "properties": {
+        "codemitra.ollamaUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama server URL"
+        },
+        "codemitra.modelName": {
+          "type": "string",
+          "default": "codeMITRA",
+          "description": "Ollama model name to use"
+        },
+        "codemitra.maxHistory": {
+          "type": "number",
+          "default": 6,
+          "description": "Maximum conversation history to keep"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.54.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

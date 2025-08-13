@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CodeMITRA</title>
+</head>
+<body>
+    <h2>CodeMITRA Chat</h2>
+    <textarea id="input" placeholder="Ask a code question..."></textarea><br>
+    <button id="send">Send</button>
+    <pre id="output"></pre>
+
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        document.getElementById("send").addEventListener("click", async () => {
+            const prompt = document.getElementById("input").value.trim();
+            if (!prompt) return;
+            const res = await fetch("http://127.0.0.1:5000/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt })
+            });
+            const data = await res.json();
+            document.getElementById("output").textContent = data.answer;
+        });
+    </script>
+</body>
+</html>

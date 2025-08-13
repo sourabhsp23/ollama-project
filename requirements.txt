@@ -1,0 +1,5 @@
+langchain
+gradio
+flask
+flask-cors
+requests
