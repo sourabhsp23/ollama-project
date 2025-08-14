@@ -156,21 +156,3 @@ if __name__ == "__main__":
 
 
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-import uvicorn
-
-class Query(BaseModel):
-    prompt: str
-
-api = FastAPI()
-
-@api.post("/ask")
-def ask(query: Query):
-    reply = generate_response(query.prompt)
-    return {"answer": reply}
-
-if __name__ == "__main__":
-    import threading
-    threading.Thread(target=lambda: interface.launch(server_name="127.0.0.1", server_port=7860)).start()
-    uvicorn.run(api, host="127.0.0.1", port=5000)
